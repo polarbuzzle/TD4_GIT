@@ -1,8 +1,8 @@
 
 /********************************************
-* Titre: Travail pratique #4 - Piece.h
-* Date:
-* Auteur:
+* Titre:	Travail pratique #4 - Piece.h
+* Date:		24 février 2017
+* Auteur:	FERRON, Samuel. FONTAINE, Jean-Frederic
 *******************************************/
 
 #ifndef PIECE_H
@@ -10,6 +10,7 @@
 
 
 #include <iostream>
+#include <typeinfo>
 #include <string>
 
 using namespace std;
@@ -20,7 +21,8 @@ using namespace std;
 public :
 	// constructeurs
 	Piece() {}
-	Piece(const string& id, const string& couleur, int positionX, int positionY):id_(id), couleur_(couleur), positionX_(positionX), positionY_(positionY){}
+	Piece(const string& id, const string& couleur, int positionX, int positionY)
+		:id_(id), couleur_(couleur), positionX_(positionX), positionY_(positionY){}
 
 	// destructeur
 	~Piece() {}
@@ -59,24 +61,29 @@ public :
 
 	
 	bool estMouvementValide(int toX, int toY) const{
-		// A IMPLEMENTER
+
+		bool estValideX = (toX < 8 && toX >= 0 && toX -obtenirPositionX() != 0);
+		bool estValideY = (toY < 8 && toY >= 0 && toY -obtenirPositionY() != 0);
+
+		return estValideX && estValideY;
 	} 
 
      
-	bool deplacer(int toX, int toY); // A MODIFIER
+	virtual bool deplacer(int toX, int toY); // A MODIFIER
 
 	
 	string obtenirType() const 	{ 
-		// A IMPLEMENTER	
+		return typeid(*this).name();
 	}
 
 	friend std::ostream& operator<<(std::ostream& out, const Piece& piece)
 	{
-		//A IMPLEMENTER
+		out << piece.afficher(out);
+		return out;
 	}
 
 	                                            
-	ostream&  afficher(ostream& stream) const {  // A MODIFIER SI NECESSAIRE
+	virtual ostream&  afficher(ostream& stream) const {  // A MODIFIER SI NECESSAIRE
 		stream << "Piece " << couleur_ << " d'id " << id_ << " : " << endl;
 		stream << "Position (" << positionX_ << ", " << positionY_ << ")" << endl;
 		return stream;
