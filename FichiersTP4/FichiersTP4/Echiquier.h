@@ -33,8 +33,11 @@ public:
 	// Methodes publiques
 	
 	bool deplacerPiece(const string& id, int toX, int toY);
+	
 	Echiquier& operator+=(Piece* piece);
+	
 	Echiquier& operator-=(const string& id);
+	
 	bool promouvoir(const string& id);
 	
 	friend std::ostream& operator<<(std::ostream& out, const Echiquier& echiquier);//A completer
