@@ -20,7 +20,7 @@ Tour::~Tour(){
 }
 
 
-bool Tour::estMouvementValide(int toX, int toY) {
+bool Tour::estMouvementValide(int toX, int toY) const{
 	if (!Piece::estMouvementValide(toX, toY))
 		return false;
 	if ((obtenirPositionX() == toX)  || (obtenirPositionY() == toY))		
@@ -29,7 +29,7 @@ bool Tour::estMouvementValide(int toX, int toY) {
 		return false;
 }
 
-bool Tour::deplacer(int toX, int toY) {
+bool Tour::deplacer(int toX, int toY){
 	if (estMouvementValide(toX, toY)) {
 		modifierPositionX(toX);
 		modifierPositionX(toY);

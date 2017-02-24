@@ -27,6 +27,6 @@ public:
 	virtual bool estMouvementValide(int toX, int toY) const;
 	virtual bool deplacer(int toX, int toY);
 	virtual ostream&  afficher(ostream& stream) const;
-    
+
 };
 #endif

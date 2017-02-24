@@ -25,7 +25,7 @@ public:
 	// Destructeur
 	~Tour();
 	
-	virtual bool estMouvementValide(int toX, int toY);
+	virtual bool estMouvementValide(int toX, int toY) const;
 	virtual bool deplacer(int toX, int toY);
 };
 #endif
