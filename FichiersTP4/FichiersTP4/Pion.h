@@ -29,8 +29,8 @@ public:
 	bool obtenirEstPositionInitiale() const;
 	void setEstPositionInitiale(bool estPositionInitiale);
 
-	bool estMouvementValide(int toX, int toY);
-	bool deplacer(int toX, int toY);
+	virtual bool estMouvementValide(int toX, int toY);
+	virtual bool deplacer(int toX, int toY);
 
 private:
 	bool estPositionInitiale_;

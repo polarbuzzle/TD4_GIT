@@ -14,7 +14,7 @@
 
 using namespace std;
 
-class Tour : public Piece {
+class Tour : virtual public Piece {
 
 public:
 	// Constructeurs
@@ -25,7 +25,7 @@ public:
 	// Destructeur
 	~Tour();
 	
-	bool estMouvementValide(int toX, int toY);
-	bool deplacer(int toX, int toY);
+	virtual bool estMouvementValide(int toX, int toY);
+	virtual bool deplacer(int toX, int toY);
 };
 #endif

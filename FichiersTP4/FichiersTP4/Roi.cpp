@@ -4,7 +4,7 @@
 * Date:
 * Auteur:
 *******************************************/
-
+#include <cmath>
 #include "Roi.h"
 
 Roi::Roi(): Piece("defaultId", "blanc", 0, 0) {}

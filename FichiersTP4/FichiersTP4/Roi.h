@@ -21,8 +21,8 @@ public :
 	Roi(const string& id, const string& couleur, int positionX, int positionY);
 	~Roi();	
 
-	bool estMouvementValide(int toX, int toY);  
-	bool deplacer(int toX, int toY);
+	virtual bool estMouvementValide(int toX, int toY);  
+	virtual bool deplacer(int toX, int toY);
 
 };
 #endif

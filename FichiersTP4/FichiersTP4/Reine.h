@@ -1,32 +1,32 @@
 
 /********************************************
-* Titre: Travail pratique #4 - Fou.h
+* Titre: Travail pratique #4 - Reine.h
 * Date:
 * Auteur:
 *******************************************/
 
-#ifndef FOU_H
-#define FOU_H
+#ifndef Reine_H
+#define Reine_H
 
-#include "Piece.h"
+#include "Tour.h"
+#include "Fou.h"
 #include <string>
 #include "Pion.h"
 using namespace std;
 
-class Fou : virtual public Piece {
+class Reine : public Tour, public Fou {
 
 public:
 	// Constructeurs
-	Fou();
-	Fou(const string& id, const string& couleur, int positionX, int positionY);
-	Fou(const Pion& pion);
+	Reine();
+	Reine(const string& id, const string& couleur, int positionX, int positionY);
+	Reine(const Pion& pion);
 	// Destructeur
-	~Fou();
+	~Reine();
 
 	virtual bool estMouvementValide(int toX, int toY) const;
 	virtual bool deplacer(int toX, int toY);
 	virtual ostream&  afficher(ostream& stream) const;
-
-	
+    
 };
 #endif

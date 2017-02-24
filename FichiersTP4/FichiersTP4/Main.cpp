@@ -9,7 +9,7 @@
 #include "Roi.h"
 #include "Tour.h"
 #include "Pion.h"
-#include "Echiquier.h"
+//#include "Echiquier.h"
 
 #include <string.h>
 #include <iostream>
@@ -18,9 +18,15 @@ using namespace std;
 
 int main()
 {
-	//1-  Creez les huit pions blancs avec les coordonnées (i,1) i : 0-->7 et les id A2-->H2
+
+
+	Piece p("A8", "blanc", 0, 0);
+
+
+
+	//1-  Creez les huit pions blancs avec les coordonnï¿½es (i,1) i : 0-->7 et les id A2-->H2
 	
-	//2-Creez les huit pions noirs avec les coordonnées (i,6) i : 0-->7 et les id A7-->H7
+	//2-Creez les huit pions noirs avec les coordonnï¿½es (i,6) i : 0-->7 et les id A7-->H7
 	
 	//3-  Creez les deux tours blanches d'id "A1" et "H1" dans les positions respectives (0,0) et (7,0)
 	
@@ -35,18 +41,18 @@ int main()
 	// 8- Creez un echiquier 
 	
 	cout << "----------AJOUT DES PIECES----------" << endl;
-	//9- Ajoutez toutes les pièces précidament définies à l'echiquier	
+	//9- Ajoutez toutes les piï¿½ces prï¿½cidament dï¿½finies ï¿½ l'echiquier	
 	
 	cout << "----------TEST DES DEPLACEMENTS------------" << endl;
-	//10-  Deplacer la piece d'id A2 à la position (0,2)  --Deplacement de Pion
+	//10-  Deplacer la piece d'id A2 ï¿½ la position (0,2)  --Deplacement de Pion
 	
-	//11-  Deplacer le piece d'id H7 à la position (7,4)  --Deplacement du Pion
+	//11-  Deplacer le piece d'id H7 ï¿½ la position (7,4)  --Deplacement du Pion
 	
-	//12-  Deplacer la piece d'id A2 à la position (0,4)  --Deplacement du Pion
+	//12-  Deplacer la piece d'id A2 ï¿½ la position (0,4)  --Deplacement du Pion
 	
-	//13-  Deplacer la piece d'id H8 à la position (7,6)  --Deplacement de la Tour
+	//13-  Deplacer la piece d'id H8 ï¿½ la position (7,6)  --Deplacement de la Tour
 	
-	//14-  Deplacer la piece d'id H8 à la position (7,6)  --Deplacement de la Tour
+	//14-  Deplacer la piece d'id H8 ï¿½ la position (7,6)  --Deplacement de la Tour
 	
 	//15-  Enlever la piece d'id A2 
 
@@ -57,7 +63,7 @@ int main()
 	//17- Promouvoir la piece d'id B2.	
 
 	//18- Affichage de l'Echiquier
-	cout << unEchiquier;
+	//cout << unEchiquier;
 	//Si vous avez besoin de lancer avec un arret a la fin, faites ctrl+F5;
 
 	return 0;

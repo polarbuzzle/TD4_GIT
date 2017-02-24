@@ -60,7 +60,7 @@ public :
 	}
 
 	
-	bool estMouvementValide(int toX, int toY) const{
+	virtual bool estMouvementValide(int toX, int toY) const{
 
 		bool estValideX = (toX < 8 && toX >= 0 && toX -obtenirPositionX() != 0);
 		bool estValideY = (toY < 8 && toY >= 0 && toY -obtenirPositionY() != 0);
@@ -69,7 +69,7 @@ public :
 	} 
 
      
-	virtual bool deplacer(int toX, int toY); // A MODIFIER
+	virtual bool deplacer(int toX, int toY) = 0; // A MODIFIER
 
 	
 	string obtenirType() const 	{ 
