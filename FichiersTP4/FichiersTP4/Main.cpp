@@ -66,9 +66,11 @@ int main()
 	cout << "----------AJOUT DES PIECES----------" << endl;
 	//9- Ajoutez toutes les pi�ces pr�cidament d�finies � l'echiquier	
 	
+	echiquier += &tb1;
+
 	cout << "----------TEST DES DEPLACEMENTS------------" << endl;
 	//10-  Deplacer la piece d'id A2 � la position (0,2)  --Deplacement de Pion
-	
+	echiquier.deplacerPiece("A1", 0, 7);
 	//11-  Deplacer le piece d'id H7 � la position (7,4)  --Deplacement du Pion
 	
 	//12-  Deplacer la piece d'id A2 � la position (0,4)  --Deplacement du Pion
@@ -86,7 +88,7 @@ int main()
 	//17- Promouvoir la piece d'id B2.	
 
 	//18- Affichage de l'Echiquier
-	//cout << unEchiquier;
+	cout << echiquier;
 	//Si vous avez besoin de lancer avec un arret a la fin, faites ctrl+F5;
 
 	return 0;

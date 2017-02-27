@@ -36,11 +36,12 @@ public:
 	
 	Echiquier& operator+=(Piece* piece);
 	
-	Echiquier& operator-=(const string& id);
+	//Echiquier& operator-=(const string& id);
 	
 	bool promouvoir(Piece &piece);
 
-	//void reconnaiseurDeClasse(const Piece &p,const  bool couleur);
+
+	//Echiquier& operator-=(&Piece)
 	
 	friend std::ostream& operator<<(std::ostream& out, const Echiquier& echiquier);//A completer
 	

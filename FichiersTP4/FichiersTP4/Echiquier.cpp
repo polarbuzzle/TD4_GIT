@@ -89,7 +89,7 @@ Echiquier& Echiquier::operator+=(Piece* piece) {
 			if (vecteurPiecesBlanches_[i]->obtenirId() == piece->obtenirId())
 				memeId = true;
 			}
-		if ((tour = dynamic_cast<Tour*>(piece)))
+		if ((tour = dynamic_cast<Tour*>(piece)) && !memeId)
 			vecteurPiecesBlanches_.push_back(tour);
 	}
 	else if (couleur == "noir") {
@@ -99,10 +99,38 @@ Echiquier& Echiquier::operator+=(Piece* piece) {
 				memeId = true;
 			}
 		}
-		if ((tour = dynamic_cast<Tour*>(piece)))
+		if ((Tour* tour = new tdynamic_cast<Tour*>(piece)) && memeId))
 			vecteurPiecesNoires_.push_back(tour);
 	}
 }
+/*********************************************
+*Fonctions:		Echiquier::operator+=()
+*Descriptions:	permet d'ajouter une piece a l'echiquier. Cette fonction
+verifie qu'aucune autre piece a le meme ID. De plus, la fonciton effectue
+un cast dynamic afin de verifier si le type inserer est compatible.
+*Parametre:		-(Piece*)piece		 : Le pointeur de la piece a ajouter.
+*Retour:		-(Personnel&)this : le personnel modiffie
+*********************************************/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 /*********************************************
