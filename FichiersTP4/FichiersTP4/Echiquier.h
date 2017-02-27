@@ -40,7 +40,7 @@ public:
 	
 	bool promouvoir(Piece &piece);
 
-	void reconnaiseurDeClasse(const Piece &p,const  bool couleur);
+	//void reconnaiseurDeClasse(const Piece &p,const  bool couleur);
 	
 	friend std::ostream& operator<<(std::ostream& out, const Echiquier& echiquier);//A completer
 	

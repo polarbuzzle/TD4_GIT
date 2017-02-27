@@ -30,11 +30,11 @@ Echiquier::Echiquier() {}
 Echiquier::~Echiquier() {
 	Echiquier::~Echiquier() {
 		for (int i = 0; i < vecteurPiecesBlanches_.size(); i++) {
-			delete vecteurPiecesBlanches_[i];
+			//delete vecteurPiecesBlanches_[i];
 			vecteurPiecesBlanches_[i] = nullptr;
 		}
 		for (int j = 0; j < vecteurPiecesNoires_.size(); j++) {
-			delete vecteurPiecesBlanches_[j];
+			//delete vecteurPiecesBlanches_[j];
 			vecteurPiecesNoires_[j] = nullptr;
 		}
 	}
@@ -82,13 +82,15 @@ Echiquier& Echiquier::operator+=(Piece* piece) {
 	bool memeId = false; 
 	string couleur = piece->obtenirCouleur();
 	bool couleurNoir = false; 
+	Tour* tour; 
 	if (couleur == "blanc") {
 
 		for (int i = 0; i < vecteurPiecesBlanches_.size(); i++) {
 			if (vecteurPiecesBlanches_[i]->obtenirId() == piece->obtenirId())
 				memeId = true;
-
-		}
+			}
+		if (tour = dynamic_cast<Tour*>(piece))
+			vecteurPiecesBlanches_.push_back(tour);
 	}
 	else if (couleur == "noir") {
 		couleurNoir = true; 
@@ -97,15 +99,10 @@ Echiquier& Echiquier::operator+=(Piece* piece) {
 				memeId = true;
 			}
 		}
+		if (tour = dynamic_cast<Tour*>(piece))
+			vecteurPiecesNoires_.push_back(tour);
 	}
-
-	
-
-
-	
-
-
-	}
+}
 
 
 /*********************************************
@@ -117,6 +114,7 @@ Echiquier& Echiquier::operator+=(Piece* piece) {
 un cast dynamic afin de verifier si le type inserer est compatible.
 *Parametre:		-(Piece*)piece		 : Le pointeur de la piece a ajouter.
 *Retour:		-(Personnel&)this : le personnel modiffie
+<<<<<<< HEAD
 *********************************************/
 void Echiquier::reconnaiseurDeClasse(const Piece &p,const bool couleur) {
 
@@ -139,6 +137,7 @@ void Echiquier::reconnaiseurDeClasse(const Piece &p,const bool couleur) {
 	else
 		vecteurPiecesNoires_.push_back(nouveau);
 }
+
 
 
 
