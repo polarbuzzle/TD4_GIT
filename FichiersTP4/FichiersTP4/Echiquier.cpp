@@ -165,6 +165,14 @@ bool Echiquier::promouvoir(Piece &piece) {
 	return true;
 }
 
+/*********************************************
+*Fonctions:		operato <<
+*Descriptions:	Permet d'afficher toutes les informations
+				de chacune des pieces dans ses vecteurs.				
+*Parametre:		out : flux dans lequel on met les informations
+				echiquier : l'echiquier que nous voulons afficher
+*Retour:		out : flux dans lequel on a mit les informations
+*********************************************/
 std::ostream & operator<<(std::ostream & out, const Echiquier & echiquier)
 {
 	out << "------------INFORMATION PIECES BLANCHES------------" << endl;
@@ -179,5 +187,5 @@ std::ostream & operator<<(std::ostream & out, const Echiquier & echiquier)
 	for (unsigned i = 0; i < echiquier.vecteurPiecesNoires_.size(); i++) {
 		cout << *(echiquier.vecteurPiecesNoires_[i]) << endl;
 	}
-
+	return out;
 }
