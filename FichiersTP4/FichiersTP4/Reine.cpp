@@ -19,10 +19,7 @@ Reine::~Reine() {}
 
 bool Reine::estMouvementValide(int toX, int toY) const{
     bool estValide = false;
-	if (Piece::estMouvementValide(toX, toY)) {
-        if (Tour::estMouvementValide(toX, toY) || Fou::estMouvementValide(toX, toY))
-            estValide = true;
-    }
+	
     return estValide;
 }
 

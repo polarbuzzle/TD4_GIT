@@ -13,7 +13,7 @@
 #include "Pion.h"
 using namespace std;
 
-class Fou : virtual public Piece {
+class Fou : public Piece {
 
 public:
 	// Constructeurs

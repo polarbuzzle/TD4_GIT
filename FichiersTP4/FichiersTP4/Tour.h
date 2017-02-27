@@ -14,7 +14,7 @@
 
 using namespace std;
 
-class Tour : virtual public Piece {
+class Tour : public Piece {
 
 public:
 	// Constructeurs
