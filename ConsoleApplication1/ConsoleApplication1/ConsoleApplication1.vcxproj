@@ -159,6 +159,7 @@
     <ClCompile Include="..\..\FichiersTP4\FichiersTP4\Pion.cpp" />
     <ClCompile Include="..\..\FichiersTP4\FichiersTP4\Roi.cpp" />
     <ClCompile Include="..\..\FichiersTP4\FichiersTP4\Tour.cpp" />
+    <ClCompile Include="echiquierBackup.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
