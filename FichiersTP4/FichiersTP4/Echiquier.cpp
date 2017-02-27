@@ -72,11 +72,11 @@ bool Echiquier::deplacerPiece(const string& id, int toX, int toY) {
 *********************************************/
 Echiquier& Echiquier::operator+=(Piece* piece) {
 	bool memeId = false; 
-	string couleur = piece->obtenirCouleur;
+	string couleur = piece->obtenirCouleur();
 	bool couleurNoir = false; 
 	if (couleur == "blanc") {
 		for (int i = 0; i < vecteurPiecesBlanches_.size(); i++) {
-			if (vecteurPiecesBlanches_[i]->obtenirId == piece->obtenirId)
+			if (vecteurPiecesBlanches_[i]->obtenirId() == piece->obtenirId())
 				memeId = true;
 
 		}
@@ -84,7 +84,7 @@ Echiquier& Echiquier::operator+=(Piece* piece) {
 	else if (couleur == "noir") {
 		couleurNoir = true; 
 		for (int j = 0; j < vecteurPiecesNoires_.size(); j++) {
-			if (vecteurPiecesNoires_[j]->obtenirId == piece->obtenirId) {
+			if (vecteurPiecesNoires_[j]->obtenirId() == piece->obtenirId()) {
 				memeId = true;
 			}
 		}
@@ -145,12 +145,16 @@ void Echiquier::reconnaiseurDeClasse(const Piece &p,const bool couleur) {
 std::ostream & operator<<(std::ostream & out, const Echiquier & echiquier)
 {
 	out << "------------INFORMATION PIECES BLANCHES------------" << endl;
-	out << "Il y a " << << " Pieces blanches" << endl;
-
-
+	out << "Il y a " << echiquier.vecteurPiecesBlanches_.size() << " Pieces blanches" << endl;
+	for (unsigned i = 0 ; i < echiquier.vecteurPiecesBlanches_.size(); i++) {
+		cout << *(echiquier.vecteurPiecesBlanches_[i]) << endl;
+	}
 
 	out << endl;
 	out << "------------INFORMATION PIECES NOIRES--------------" << endl;
-	out << "Il y a " << << " Pieces noires" << endl;
+	out << "Il y a " << echiquier.vecteurPiecesNoires_.size() << " Pieces noires" << endl;
+	for (unsigned i = 0; i < echiquier.vecteurPiecesNoires_.size(); i++) {
+		cout << *(echiquier.vecteurPiecesNoires_[i]) << endl;
+	}
 
 }
