@@ -27,10 +27,17 @@ Echiquier::Echiquier() {}
 *Retour:		Aucun
 *********************************************/
 Echiquier::~Echiquier() {
-
-
+	Echiquier::~Echiquier() {
+		for (int i = 0; i < vecteurPiecesBlanches_.size(); i++) {
+			delete vecteurPiecesBlanches_[i];
+			vecteurPiecesBlanches_[i] = nullptr;
+		}
+		for (int j = 0; j < vecteurPiecesNoires_.size(); j++) {
+			delete vecteurPiecesBlanches_[j];
+			vecteurPiecesNoires_[j] = nullptr;
+		}
+	}
 }
-
 /*************************************************************************************
 *Fonctions:		Echiquier::deplacerPiece()
 *Descriptions:	Fonction qui permet de modifier les coordonne d'une
@@ -75,6 +82,7 @@ Echiquier& Echiquier::operator+=(Piece* piece) {
 	string couleur = piece->obtenirCouleur;
 	bool couleurNoir = false; 
 	if (couleur == "blanc") {
+
 		for (int i = 0; i < vecteurPiecesBlanches_.size(); i++) {
 			if (vecteurPiecesBlanches_[i]->obtenirId == piece->obtenirId)
 				memeId = true;
