@@ -39,6 +39,8 @@ public:
 	Echiquier& operator-=(const string& id);
 	
 	bool promouvoir(const string& id);
+
+	void reconnaiseurDeClasse(const Piece &p,const  bool couleur);
 	
 	friend std::ostream& operator<<(std::ostream& out, const Echiquier& echiquier);//A completer
 	
