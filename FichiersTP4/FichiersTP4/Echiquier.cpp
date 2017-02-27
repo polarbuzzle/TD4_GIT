@@ -54,13 +54,13 @@ bool Echiquier::deplacerPiece(const string& id, int toX, int toY) {
 	bool pieceTrouver = false; 
 
 	for (int i = 0; i < vecteurPiecesBlanches_.size(); i++) {
-		if (vecteurPiecesBlanches_[i]->obtenirId == id) {
+		if (vecteurPiecesBlanches_[i]->obtenirId() == id) {
 			deplacementReussi = vecteurPiecesBlanches_[i]->deplacer(toX, toY);
 			pieceTrouver = true; 
 		}
 	}
 	for (int j = 0; j < vecteurPiecesNoires_.size() && !pieceTrouver; j++) {
-		if (vecteurPiecesNoires_[j]->obtenirId == id) {
+		if (vecteurPiecesNoires_[j]->obtenirId() == id) {
 			deplacementReussi = vecteurPiecesNoires_[j]->deplacer(toX, toY);
 			pieceTrouver = true; 
 		}
