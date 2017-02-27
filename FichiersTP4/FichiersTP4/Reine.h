@@ -14,7 +14,7 @@
 #include "Pion.h"
 using namespace std;
 
-class Reine : public Tour, public Fou {
+class Reine : public Piece {
 
 public:
 	// Constructeurs

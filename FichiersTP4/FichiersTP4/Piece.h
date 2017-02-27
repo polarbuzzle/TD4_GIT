@@ -61,11 +61,13 @@ public :
 
 	
 	virtual bool estMouvementValide(int toX, int toY) const{
-
-		bool estValideX = (toX < 8 && toX >= 0 && toX -obtenirPositionX() != 0);
-		bool estValideY = (toY < 8 && toY >= 0 && toY -obtenirPositionY() != 0);
-
-		return estValideX && estValideY;
+		bool estValide = false;
+		bool estValideX = (toX < 8 && toX >= 0);
+		bool estValideY = (toY < 8 && toY >= 0);
+		if(estValideX && estValideY) {
+			estValide = ((toX - obtenirPositionX() != 0) || (toY - obtenirPositionY() != 0));
+		}
+		return estValide;
 	} 
 
      

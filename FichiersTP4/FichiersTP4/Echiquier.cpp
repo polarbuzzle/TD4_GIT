@@ -27,18 +27,17 @@ Echiquier::Echiquier() {}
 *Parametre:		Aucun
 *Retour:		Aucun
 *********************************************/
-Echiquier::~Echiquier() {
 	Echiquier::~Echiquier() {
 		for (int i = 0; i < vecteurPiecesBlanches_.size(); i++) {
 			//delete vecteurPiecesBlanches_[i];
-			vecteurPiecesBlanches_[i] = nullptr;
+			vecteurPiecesBlanches_[i] = NULL;
 		}
 		for (int j = 0; j < vecteurPiecesNoires_.size(); j++) {
 			//delete vecteurPiecesBlanches_[j];
-			vecteurPiecesNoires_[j] = nullptr;
+			vecteurPiecesNoires_[j] = NULL;
 		}
 	}
-}
+
 /*************************************************************************************
 *Fonctions:		Echiquier::deplacerPiece()
 *Descriptions:	Fonction qui permet de modifier les coordonne d'une
@@ -68,6 +67,13 @@ bool Echiquier::deplacerPiece(const string& id, int toX, int toY) {
 		}
 	}
 
+	if (deplacementReussi) {
+		cout << "Deplacement de la piece reussie" << endl;
+	}
+	else {
+		cout << "Mouvement non valide" << endl;
+	}
+
 	return deplacementReussi; 
 }
 /*********************************************
@@ -89,8 +95,11 @@ Echiquier& Echiquier::operator+=(Piece* piece) {
 			if (vecteurPiecesBlanches_[i]->obtenirId() == piece->obtenirId())
 				memeId = true;
 			}
-		if ((tour = dynamic_cast<Tour*>(piece)) && !memeId)
-			vecteurPiecesBlanches_.push_back(tour);
+		if ((tour = dynamic_cast<Tour*>(piece))) {
+			vecteurPiecesBlanches_.push_back(new Tour(tour->obtenirId(), tour->obtenirCouleur(), tour->obtenirPositionX(), tour->obtenirPositionY()));
+			cout << *tour << endl << *piece << endl;
+		}
+			
 	}
 	else if (couleur == "noir") {
 		couleurNoir = true; 
@@ -99,38 +108,10 @@ Echiquier& Echiquier::operator+=(Piece* piece) {
 				memeId = true;
 			}
 		}
-		if ((Tour* tour = new tdynamic_cast<Tour*>(piece)) && memeId))
+		if ((tour = dynamic_cast<Tour*>(piece)))
 			vecteurPiecesNoires_.push_back(tour);
 	}
 }
-/*********************************************
-*Fonctions:		Echiquier::operator+=()
-*Descriptions:	permet d'ajouter une piece a l'echiquier. Cette fonction
-verifie qu'aucune autre piece a le meme ID. De plus, la fonciton effectue
-un cast dynamic afin de verifier si le type inserer est compatible.
-*Parametre:		-(Piece*)piece		 : Le pointeur de la piece a ajouter.
-*Retour:		-(Personnel&)this : le personnel modiffie
-*********************************************/
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 /*********************************************
