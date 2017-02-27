@@ -61,6 +61,7 @@ int main()
 	Roi roin("D8", "blanc", 3, 0);
 	
 	// 8- Creez un echiquier 
+	Echiquier echiquier;
 	
 	cout << "----------AJOUT DES PIECES----------" << endl;
 	//9- Ajoutez toutes les pi�ces pr�cidament d�finies � l'echiquier	

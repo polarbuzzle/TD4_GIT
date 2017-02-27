@@ -38,7 +38,7 @@ public:
 	
 	Echiquier& operator-=(const string& id);
 	
-	bool promouvoir(const string& id);
+	bool promouvoir(Piece &piece);
 
 	void reconnaiseurDeClasse(const Piece &p,const  bool couleur);
 	

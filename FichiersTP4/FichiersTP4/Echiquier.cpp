@@ -5,6 +5,7 @@
 *Description: Implementation de classe Echiquier
 *********************************************/
 #include "Echiquier.h"
+#include <stdlib.h>
 #include <time.h>
 #include <string>
 #include "Piece.h"
@@ -112,7 +113,7 @@ un cast dynamic afin de verifier si le type inserer est compatible.
 void Echiquier::reconnaiseurDeClasse(const Piece &p,const bool couleur) {
 
 	string nomDuType = typeid(p).name();
-	Piece* nouveau = nullptr;
+	Piece* nouveau = 0;
 
 	if (nomDuType == "Roi") 
 		nouveau = new Roi(p.obtenirId(), p.obtenirCouleur(), p.obtenirPositionX(), p.obtenirPositionY());
@@ -141,6 +142,20 @@ void Echiquier::reconnaiseurDeClasse(const Piece &p,const bool couleur) {
 
 
 
+bool Echiquier::promouvoir(Piece &piece) {
+	int nombreAll = rand() %2;
+
+	switch (nombreAll) {
+		case 0: 
+		break;
+		case 1: 
+		break;
+		case 2: 
+		break;
+	}
+
+	return true;
+}
 
 std::ostream & operator<<(std::ostream & out, const Echiquier & echiquier)
 {
