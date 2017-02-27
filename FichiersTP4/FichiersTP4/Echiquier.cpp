@@ -89,7 +89,7 @@ Echiquier& Echiquier::operator+=(Piece* piece) {
 			if (vecteurPiecesBlanches_[i]->obtenirId() == piece->obtenirId())
 				memeId = true;
 			}
-		if (tour = dynamic_cast<Tour*>(piece))
+		if ((tour = dynamic_cast<Tour*>(piece)))
 			vecteurPiecesBlanches_.push_back(tour);
 	}
 	else if (couleur == "noir") {
@@ -99,7 +99,7 @@ Echiquier& Echiquier::operator+=(Piece* piece) {
 				memeId = true;
 			}
 		}
-		if (tour = dynamic_cast<Tour*>(piece))
+		if ((tour = dynamic_cast<Tour*>(piece)))
 			vecteurPiecesNoires_.push_back(tour);
 	}
 }
@@ -114,29 +114,28 @@ Echiquier& Echiquier::operator+=(Piece* piece) {
 un cast dynamic afin de verifier si le type inserer est compatible.
 *Parametre:		-(Piece*)piece		 : Le pointeur de la piece a ajouter.
 *Retour:		-(Personnel&)this : le personnel modiffie
-<<<<<<< HEAD
 *********************************************/
-void Echiquier::reconnaiseurDeClasse(const Piece &p,const bool couleur) {
+// void Echiquier::reconnaiseurDeClasse(const Piece &p,const bool couleur) {
 
-	string nomDuType = typeid(p).name();
-	Piece* nouveau = 0;
+// 	string nomDuType = typeid(p).name();
+// 	Piece* nouveau = 0;
 
-	if (nomDuType == "Roi") 
-		nouveau = new Roi(p.obtenirId(), p.obtenirCouleur(), p.obtenirPositionX(), p.obtenirPositionY());
-	else if (nomDuType == "Pion")
-		nouveau = new Pion(p.obtenirId(), p.obtenirCouleur(), p.obtenirPositionX(), p.obtenirPositionY());
-	else if (nomDuType == "Tour")
-		nouveau = new Tour(p.obtenirId(), p.obtenirCouleur(), p.obtenirPositionX(), p.obtenirPositionY());
-	else if (nomDuType == "Reine")
-		nouveau = new Reine(p.obtenirId(), p.obtenirCouleur(), p.obtenirPositionX(), p.obtenirPositionY());
-	else if (nomDuType == "Fou")
-		nouveau = new Fou(p.obtenirId(), p.obtenirCouleur(), p.obtenirPositionX(), p.obtenirPositionY());
+// 	if (nomDuType == "Roi") 
+// 		nouveau = new Roi(p.obtenirId(), p.obtenirCouleur(), p.obtenirPositionX(), p.obtenirPositionY());
+// 	else if (nomDuType == "Pion")
+// 		nouveau = new Pion(p.obtenirId(), p.obtenirCouleur(), p.obtenirPositionX(), p.obtenirPositionY());
+// 	else if (nomDuType == "Tour")
+// 		nouveau = new Tour(p.obtenirId(), p.obtenirCouleur(), p.obtenirPositionX(), p.obtenirPositionY());
+// 	else if (nomDuType == "Reine")
+// 		nouveau = new Reine(p.obtenirId(), p.obtenirCouleur(), p.obtenirPositionX(), p.obtenirPositionY());
+// 	else if (nomDuType == "Fou")
+// 		nouveau = new Fou(p.obtenirId(), p.obtenirCouleur(), p.obtenirPositionX(), p.obtenirPositionY());
 
-	if (!couleur)
-		vecteurPiecesBlanches_.push_back(nouveau);
-	else
-		vecteurPiecesNoires_.push_back(nouveau);
-}
+// 	if (!couleur)
+// 		vecteurPiecesBlanches_.push_back(nouveau);
+// 	else
+// 		vecteurPiecesNoires_.push_back(nouveau);
+// }
 
 
 
