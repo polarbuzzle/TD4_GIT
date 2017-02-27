@@ -69,10 +69,6 @@ bool Echiquier::deplacerPiece(const string& id, int toX, int toY) {
 	return deplacementReussi; 
 }
 
-
-
-
-
 std::ostream & operator<<(std::ostream & out, const Echiquier & echiquier)
 {
 	out << "------------INFORMATION PIECES BLANCHES------------" << endl;
