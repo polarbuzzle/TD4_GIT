@@ -10,7 +10,6 @@
 #include "Tour.h"
 #include "Pion.h"
 #include "Echiquier.h"
-
 #include <string.h>
 #include <iostream>
 
@@ -43,8 +42,8 @@ int main()
 	Tour tb2("H1", "blanc", 7, 0);
 
 	//4-  Creez les deux tours noires  d'id "A8" et "H8" dans les positions respectives (0,7) et (7,7)
-	Tour tn1("A8", "blanc", 0, 7);
-	Tour tn2("H8", "blanc", 7, 7);
+	Tour tn1("A8", "noir", 0, 7);
+	Tour tn2("H8", "noir", 7, 7);
 
 	//5-  Creez les Fous blanc et noirs
 	Fou fb1("B1","blanc", 1, 0);
@@ -54,26 +53,22 @@ int main()
 
 	//6-  Creez les deux reines E1 et E8	
 	Reine rb("E1", "blanc", 4, 0);
-	Reine rn("E8", "blanc", 4, 7);
+	Reine rn("E8", "noir", 4, 7);
 
 	//7-  Creez les deux rois D1 et D8
 	Roi roib("D1", "blanc", 3, 0);
-	Roi roin("D8", "blanc", 3, 0);
+	Roi roin("D8", "noir", 3, 0);
 	
 	// 8- Creez un echiquier 
-	Echiquier unEchiquier;
-	
+	Echiquier unEchiquier;	
+
 	cout << "----------AJOUT DES PIECES----------" << endl;
 	//9- Ajoutez toutes les pi�ces pr�cidament d�finies � l'echiquier	
 
 	cout << "----------TEST DES DEPLACEMENTS------------" << endl;
 	//10-  Deplacer la piece d'id A2 � la position (0,2)  --Deplacement de Pion
 	
-	tb2.deplacer(2,0);
 	
-	
-	cout << tb2 << endl;
-
 	//cout << unEchiquier;
 	
 	//11-  Deplacer le piece d'id H7 � la position (7,4)  --Deplacement du Pion

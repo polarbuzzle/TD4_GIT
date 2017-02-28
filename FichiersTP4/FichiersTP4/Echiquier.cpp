@@ -160,14 +160,15 @@ un cast dynamic afin de verifier si le type inserer est compatible.
 
 bool Echiquier::promouvoir(Piece &piece) {
 	int nombreAll = rand() %2;
-
-	switch (nombreAll) {
+	if (typeid(piece).name() == "Pion") {
+		switch (nombreAll) {
 		case 0: 
 		break;
 		case 1: 
 		break;
 		case 2: 
 		break;
+	}
 	}
 
 	return true;
