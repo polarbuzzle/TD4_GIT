@@ -232,7 +232,7 @@ bool Echiquier::promouvoir(const string& id) {
 			}
 		break;
 		}
-		cout << "Le pion d'id " << piece.obtenirId() << "est maintenant un(e)" << typeid(*lePion).name() << endl;
+		cout << "Le pion d'id " << id << "est maintenant un(e)" << typeid(*lePion).name() << endl;
 		return true;
 	}
 	cout << "Promotion impossible" << endl;
