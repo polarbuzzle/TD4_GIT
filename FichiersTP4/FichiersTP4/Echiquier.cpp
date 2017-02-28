@@ -29,11 +29,9 @@ Echiquier::Echiquier() {}
 *********************************************/
 	Echiquier::~Echiquier() {
 		for (int i = 0; i < vecteurPiecesBlanches_.size(); i++) {
-			//delete vecteurPiecesBlanches_[i];
 			vecteurPiecesBlanches_[i] = NULL;
 		}
 		for (int j = 0; j < vecteurPiecesNoires_.size(); j++) {
-			//delete vecteurPiecesBlanches_[j];
 			vecteurPiecesNoires_[j] = NULL;
 		}
 	}
@@ -193,25 +191,36 @@ Echiquier& Echiquier::operator+=(Piece* piece) {
  *******************************************************************/
 bool Echiquier::promouvoir(const string& id) {
 	int nombreAll = rand() %2;
-	Pion* lePion = nullptr;
 	int index = -1;
 	bool estBlanc = true;
+	bool estTrouve = false;
+	bool estPion = false;
+	Pion* lePion = 0;
 	for (unsigned i = 0; i < vecteurPiecesBlanches_.size(); i++) {
-		if (vecteurPiecesBlanches_[i]->obtenirId() == id) {
-			index = i;
+		if (vecteurPiecesBlanches_[i]->obtenirId() == id && vecteurPiecesBlanches_[i]->obtenirType() == "class Pion") {
+			lePion = new Pion(vecteurPiecesBlanches_[i]->obtenirId(),
+				vecteurPiecesBlanches_[i]->obtenirCouleur(),
+				vecteurPiecesBlanches_[i]->obtenirPositionX(),
+				vecteurPiecesBlanches_[i]->obtenirPositionY());
 			estBlanc = true;
+			estTrouve = true;
+			index = i;
 		}
 	}
-	for(unsigned i = 0; i < vecteurPiecesNoires_.size(); i++) {
-		 if (vecteurPiecesNoires_[i]->obtenirId() == id) {
-			index = i;
+	for(unsigned i = 0; i < vecteurPiecesNoires_.size() && !estTrouve; i++) {
+		 if (vecteurPiecesNoires_[i]->obtenirId() == id && vecteurPiecesNoires_[i]->obtenirType() == "class Pion") {
+			 lePion = new Pion(vecteurPiecesNoires_[i]->obtenirId(),
+				 vecteurPiecesNoires_[i]->obtenirCouleur(),
+				 vecteurPiecesNoires_[i]->obtenirPositionX(),
+				 vecteurPiecesNoires_[i]->obtenirPositionY());
 			estBlanc = false;
+			estTrouve = true;
+			index = i;
 		}
 	}
 
-	if (index >= 0)
-		Pion* lePion = dynamic_cast<Pion*>(vecteurPiecesNoires_[index]);
-	if (lePion != NULL) {
+	if (estTrouve) {
+		
 		switch (nombreAll) {
 		case 0: 
 			if (estBlanc) {
@@ -220,6 +229,7 @@ bool Echiquier::promouvoir(const string& id) {
 			else {
 				vecteurPiecesNoires_[index] = new Reine(*lePion);
 			}
+			cout << "Le pion d'id " << id << "est maintenant une reine" << endl;
 		break;
 		case 1: 
 			if (estBlanc) {
@@ -228,6 +238,7 @@ bool Echiquier::promouvoir(const string& id) {
 			else {
 				vecteurPiecesNoires_[index] = new Tour(*lePion);
 			}
+			cout << "Le pion d'id " << id << "est maintenant une tour" << endl;
 		break;
 		case 2: 
 			if (estBlanc) {
@@ -236,9 +247,9 @@ bool Echiquier::promouvoir(const string& id) {
 			else {
 				vecteurPiecesNoires_[index] = new Fou(*lePion);
 			}
+			cout << "Le pion d'id " << id << "est maintenant un fou" << endl;
 		break;
 		}
-		cout << "Le pion d'id " << id << "est maintenant un(e)" << typeid(*lePion).name() << endl;
 		return true;
 	}
 	cout << "Promotion impossible" << endl;

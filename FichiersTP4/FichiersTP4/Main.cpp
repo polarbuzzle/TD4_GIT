@@ -107,7 +107,6 @@ int main()
 	unEchiquier -= "A2";
 
 	cout << "----------TEST DES PROMOTIONS------------" << endl;
-	
 	//16- Promouvoir la piece d'id F6.
 	unEchiquier.promouvoir("F6");
 	//17- Promouvoir la piece d'id B2.	
