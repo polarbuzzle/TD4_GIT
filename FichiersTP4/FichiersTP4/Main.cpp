@@ -63,6 +63,9 @@ int main()
 	Echiquier unEchiquier;	
 
 	cout << "----------AJOUT DES PIECES----------" << endl;
+	unEchiquier += &roib;
+	unEchiquier += &fb1;
+	cout << unEchiquier << endl;
 	//9- Ajoutez toutes les pi�ces pr�cidament d�finies � l'echiquier	
 
 	cout << "----------TEST DES DEPLACEMENTS------------" << endl;

@@ -78,11 +78,11 @@ bool Echiquier::deplacerPiece(const string& id, int toX, int toY) {
 }
 /*********************************************
 *Fonctions:		Echiquier::operator+=()
-*Descriptions:	permet d'ajouter une piece a l'echiquier. Cette fonction
-				verifie qu'aucune autre piece a le meme ID. De plus, la fonciton effectue
-				un cast dynamic afin de verifier si le type inserer est compatible. 
+*Descriptions:	Permet d'ajouter une piece a l'echiquier. Cette fonction
+*				verifie qu'aucune autre piece a le meme ID. Si l'objet qu'on 
+*				tente d'inserer nest pas compatible un message d'erreur sera affiche.
 *Parametre:		-(Piece*)piece		 : Le pointeur de la piece a ajouter. 
-*Retour:		-(Personnel&)this : le personnel modiffie
+*Retour:		-(Personnel&)this	 : le personnel modiffie
 *********************************************/
 Echiquier& Echiquier::operator+=(Piece* piece) {
 	bool memeId = false; 
@@ -111,17 +111,15 @@ Echiquier& Echiquier::operator+=(Piece* piece) {
 		reconnaiseurDeClasse(*piece, couleurNoir);
 	return *this;
 }
-
-
 /*********************************************
 *Fonctions:		Echiquier::reconnaiseurDeClasse()
-*Descriptions:	Cette fonction permet de construire un pointeur 
-				pointant vers un nouvel objet de type Piece en precisant 
-				de quel type de piece nous avons affaire.
-				
-un cast dynamic afin de verifier si le type inserer est compatible.
-*Parametre:		-(Piece*)piece		 : Le pointeur de la piece a ajouter.
-*Retour:		-(Personnel&)this : le personnel modiffie
+*Descriptions:	Cette fonction est utilise dans la fonction += afin 
+*				de reconnaitre a quel type de piece nous avons affaire. Ensuite, 
+*				on insere la piece dans le vecteur approprier selon la couleur 
+*				de celle-ci. 
+*Parametre:		-(Piece)piece		: Le pointeur de la piece a ajouter.
+*				-(bool)couleur		: Couleur de la piece. 
+*Retour:		-(Personnel&)this	: le personnel modiffie
 *********************************************/
  void Echiquier::reconnaiseurDeClasse(const Piece &p,const bool couleur) {
 
@@ -129,23 +127,23 @@ un cast dynamic afin de verifier si le type inserer est compatible.
  	Piece* nouveau = nullptr;
 	bool ajouter = false;
 
-	if (nomDuType == "Roi") {
+	if (nomDuType == "class Roi") {
 		nouveau = new Roi(p.obtenirId(), p.obtenirCouleur(), p.obtenirPositionX(), p.obtenirPositionY());
 		ajouter = true; 
 	}
- 	else if (nomDuType == "Pion"){
+ 	else if (nomDuType == "class Pion"){
  		nouveau = new Pion(p.obtenirId(), p.obtenirCouleur(), p.obtenirPositionX(), p.obtenirPositionY());
 		ajouter = true;
 	}
- 	else if (nomDuType == "Tour"){
+ 	else if (nomDuType == "class Tour"){
  		nouveau = new Tour(p.obtenirId(), p.obtenirCouleur(), p.obtenirPositionX(), p.obtenirPositionY());
 		ajouter = true;
 	}
- 	else if (nomDuType == "Reine"){
+ 	else if (nomDuType == "class Reine"){
  		nouveau = new Reine(p.obtenirId(), p.obtenirCouleur(), p.obtenirPositionX(), p.obtenirPositionY());
 		ajouter = true;
 	}
-	else if (nomDuType == "Fou") {
+	else if (nomDuType == "class Fou") {
 		nouveau = new Fou(p.obtenirId(), p.obtenirCouleur(), p.obtenirPositionX(), p.obtenirPositionY());
 		ajouter = true;
 	}
@@ -156,6 +154,33 @@ un cast dynamic afin de verifier si le type inserer est compatible.
  		vecteurPiecesBlanches_.push_back(nouveau);
  	else if (ajouter)
  		vecteurPiecesNoires_.push_back(nouveau);
+ }
+ /*********************************************
+ *Fonctions:		Echiquier::operator+=()
+ *Descriptions:	Permet d'ajouter une piece a l'echiquier. Cette fonction
+ *				verifie qu'aucune autre piece a le meme ID. Si l'objet qu'on
+ *				tente d'inserer nest pas compatible un message d'erreur sera affiche.
+ *Parametre:		-(Piece*)piece		 : Le pointeur de la piece a ajouter.
+ *Retour:		-(Personnel&)this	 : le personnel modiffie
+ *********************************************/
+ Echiquier& Echiquier::operator-=(const string& id) {
+	 
+	 bool trouver = false; 
+	 for (int i = 0; i < vecteurPiecesBlanches_.size(); i++) {
+		 if (vecteurPiecesBlanches_[i]->obtenirId() == id) {
+			 vecteurPiecesBlanches_[i] = vecteurPiecesBlanches_[vecteurPiecesBlanches_.size() - 1];
+			 delete vecteurPiecesBlanches_[vecteurPiecesBlanches_.size() - 1];
+			 vecteurPiecesBlanches_.pop_back();
+		 }
+			
+
+
+	 }
+
+
+
+
+
  }
 
 

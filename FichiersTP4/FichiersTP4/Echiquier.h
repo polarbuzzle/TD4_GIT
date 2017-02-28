@@ -39,10 +39,8 @@ public:
 	//Fonction permettant d'ajouter une piece dans l'echiquier
 	Echiquier& operator+=(Piece* piece);
 	
-	//Echiquier& operator-=(const string& id);
-	//Fonction permettant de reconnaitre la piece a ajouter dans l'echiquier
-	void reconnaiseurDeClasse(const Piece &p, const bool couleur);
-	
+	Echiquier& operator-=(const string& id);
+
 	bool promouvoir(Piece &piece);
 
 
