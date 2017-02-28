@@ -45,7 +45,7 @@ int main()
 	Tour tn2("H8", "noir", 7, 7);
 
 	//5-  Creez les Fous blanc et noirs
-	Fou fb1("C1","blanc", 1, 0);
+	Fou fb1("C1","blanc", 2, 0);
 	Fou fb2("F1","blanc", 6, 0);
 	Fou fn1("C8","noir", 1, 7);
 	Fou fn2("F8","noir", 6, 7);

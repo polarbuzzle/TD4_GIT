@@ -29,11 +29,11 @@ Echiquier::Echiquier() {}
 *********************************************/
 	Echiquier::~Echiquier() {
 		for (int i = 0; i < vecteurPiecesBlanches_.size(); i++) {
-			delete vecteurPiecesBlanches_[i];
+			//delete vecteurPiecesBlanches_[i];
 			vecteurPiecesBlanches_[i] = NULL;
 		}
 		for (int j = 0; j < vecteurPiecesNoires_.size(); j++) {
-			delete vecteurPiecesBlanches_[j];
+			//delete vecteurPiecesBlanches_[j];
 			vecteurPiecesNoires_[j] = NULL;
 		}
 	}
@@ -107,8 +107,9 @@ Echiquier& Echiquier::operator+=(Piece* piece) {
 			
 		}
 	}
-	if (!memeId)
+	if (!memeId) {
 		reconnaiseurDeClasse(*piece, couleurNoir);
+	}
 	return *this;
 }
 /*********************************************
@@ -167,16 +168,16 @@ Echiquier& Echiquier::operator+=(Piece* piece) {
 	 bool trouver = false;
 	 for (int i = 0; i < vecteurPiecesBlanches_.size(); i++) {
 		 if (vecteurPiecesBlanches_[i]->obtenirId() == id) {
+			 delete vecteurPiecesBlanches_[i];
 			 vecteurPiecesBlanches_[i] = vecteurPiecesBlanches_[vecteurPiecesBlanches_.size() - 1];
-			 delete vecteurPiecesBlanches_[vecteurPiecesBlanches_.size() - 1];
 			 vecteurPiecesBlanches_.pop_back();
 			 trouver = true;
 		 }
 	 }
 	 for (int i = 0; i < vecteurPiecesNoires_.size() && !trouver; i++) {
 		 if (vecteurPiecesNoires_[i]->obtenirId() == id) {
+			 delete vecteurPiecesNoires_[i];
 			 vecteurPiecesNoires_[i] = vecteurPiecesNoires_[vecteurPiecesNoires_.size() - 1];
-			 delete vecteurPiecesNoires_[vecteurPiecesNoires_.size() - 1];
 			 vecteurPiecesNoires_.pop_back();
 			 trouver = true;
 		 }
@@ -192,20 +193,25 @@ Echiquier& Echiquier::operator+=(Piece* piece) {
  *******************************************************************/
 bool Echiquier::promouvoir(const string& id) {
 	int nombreAll = rand() %2;
+	Pion* lePion = nullptr;
 	int index = -1;
 	bool estBlanc = true;
-	for (unsigned i =0; i < vecteurPiecesBlanches_.size(); i++){
+	for (unsigned i = 0; i < vecteurPiecesBlanches_.size(); i++) {
 		if (vecteurPiecesBlanches_[i]->obtenirId() == id) {
 			index = i;
 			estBlanc = true;
 		}
-		else if (vecteurPiecesNoires_[i]->obtenirId() == id) {
+	}
+	for(unsigned i = 0; i < vecteurPiecesNoires_.size(); i++) {
+		 if (vecteurPiecesNoires_[i]->obtenirId() == id) {
 			index = i;
 			estBlanc = false;
 		}
 	}
-	Pion* lePion = dynamic_cast<Pion*>(vecteurPiecesNoires_[index]);
-	if ((lePion != NULL) && index >= 0) {
+
+	if (index >= 0)
+		Pion* lePion = dynamic_cast<Pion*>(vecteurPiecesNoires_[index]);
+	if (lePion != NULL) {
 		switch (nombreAll) {
 		case 0: 
 			if (estBlanc) {
