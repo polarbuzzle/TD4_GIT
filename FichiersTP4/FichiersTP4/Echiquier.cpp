@@ -171,18 +171,49 @@ un cast dynamic afin de verifier si le type inserer est compatible.
 
 bool Echiquier::promouvoir(Piece &piece) {
 	int nombreAll = rand() %2;
-	if (typeid(piece).name() == "Pion") {
+	int index = -1;
+	bool estBlanc = true;
+	for (unsigned i =0; i < vecteurPiecesBlanches_.size(); i++){
+		if (vecteurPiecesBlanches_[i]->obtenirId() == piece.obtenirId()) {
+			index = i;
+			estBlanc = true;
+		}
+		else if (vecteurPiecesNoires_[i]->obtenirId() == piece.obtenirId()) {
+			index = i;
+			estBlanc = false;
+		}
+	}
+	Pion* lePion = dynamic_cast<Pion*>(&piece);
+	if ((lePion != NULL) && index >= 0) {
 		switch (nombreAll) {
 		case 0: 
+			if (estBlanc) {
+				vecteurPiecesBlanches_[index] = new Reine(*lePion);
+			}
+			else {
+				vecteurPiecesNoires_[index] = new Reine(*lePion);
+			}
 		break;
 		case 1: 
+			if (estBlanc) {
+				vecteurPiecesBlanches_[index] = new Tour(*lePion);
+			}
+			else {
+				vecteurPiecesNoires_[index] = new Tour(*lePion);
+			}
 		break;
 		case 2: 
+			if (estBlanc) {
+				vecteurPiecesBlanches_[index] = new Fou(*lePion);
+			}
+			else {
+				vecteurPiecesNoires_[index] = new Fou(*lePion);
+			}
 		break;
+		}
+		return true;
 	}
-	}
-
-	return true;
+	return false;
 }
 
 /*********************************************
