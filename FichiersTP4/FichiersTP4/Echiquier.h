@@ -30,24 +30,19 @@ public:
 	// Destructeur
 	~Echiquier();
 
-	// Methodes publiques
-	
+	//Deplace une piece si le mouvement est valide
 	bool deplacerPiece(const string& id, int toX, int toY);
 	
 	//Fonction permettant de reconnaitre la piece a ajouter dans l'echiquier
 	void reconnaiseurDeClasse(const Piece &p, const bool couleur);
 	//Fonction permettant d'ajouter une piece dans l'echiquier
 	Echiquier& operator+=(Piece* piece);
-	
+	//Donction permettant de retirer une piece de l'echiquier
 	Echiquier& operator-=(const string& id);
-
-	bool promouvoir(Piece &piece);
-
-
-
-	friend std::ostream& operator<<(std::ostream& out, const Echiquier& echiquier);//A completer
+	//permet de promouvoir un pion 
+	bool promouvoir(const string& id);
+	friend std::ostream& operator<<(std::ostream& out, const Echiquier& echiquier);
 	
-
 private :
 	vector<Piece*>   vecteurPiecesBlanches_;
 	vector<Piece*>   vecteurPiecesNoires_;	

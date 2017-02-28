@@ -1,9 +1,9 @@
-
-/********************************************
-* Titre: Travail pratique #4 - Fou.h
-* Date:
-* Auteur:
-*******************************************/
+/**********************************************
+* Titre: Travail pratique #1 - Fou.h
+* Date: 24 fevrier 2017
+* Auteur: FERRON Samuel, FONTAINE Jean-Frederic
+*Description: Implementation de classe Fou
+*********************************************/
 
 #ifndef FOU_H
 #define FOU_H
@@ -21,12 +21,10 @@ public:
 	Fou(const string& id, const string& couleur, int positionX, int positionY);
 	Fou(const Pion& pion);
 	// Destructeur
-	~Fou();
+	virtual ~Fou();
 
 	virtual bool estMouvementValide(int toX, int toY) const;
 	virtual bool deplacer(int toX, int toY);
-	virtual ostream&  afficher(ostream& stream) const;
-
-	
+	virtual ostream&  afficher(ostream& stream) const;	
 };
 #endif

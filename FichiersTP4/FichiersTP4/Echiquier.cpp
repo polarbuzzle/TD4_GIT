@@ -190,21 +190,21 @@ Echiquier& Echiquier::operator+=(Piece* piece) {
 *Parametre:		-(Piece*)piece		 : Le pion a promouvoir 
 *Retour:		-(bool)				 : Vrai si le pion a ete promu, faux dans le cas contaire. 
  *******************************************************************/
-bool Echiquier::promouvoir(Piece &piece) {
+bool Echiquier::promouvoir(const string& id) {
 	int nombreAll = rand() %2;
 	int index = -1;
 	bool estBlanc = true;
 	for (unsigned i =0; i < vecteurPiecesBlanches_.size(); i++){
-		if (vecteurPiecesBlanches_[i]->obtenirId() == piece.obtenirId()) {
+		if (vecteurPiecesBlanches_[i]->obtenirId() == id) {
 			index = i;
 			estBlanc = true;
 		}
-		else if (vecteurPiecesNoires_[i]->obtenirId() == piece.obtenirId()) {
+		else if (vecteurPiecesNoires_[i]->obtenirId() == id) {
 			index = i;
 			estBlanc = false;
 		}
 	}
-	Pion* lePion = dynamic_cast<Pion*>(&piece);
+	Pion* lePion = dynamic_cast<Pion*>(vecteurPiecesNoires_[index]);
 	if ((lePion != NULL) && index >= 0) {
 		switch (nombreAll) {
 		case 0: 
@@ -232,8 +232,10 @@ bool Echiquier::promouvoir(Piece &piece) {
 			}
 		break;
 		}
+		cout << "Le pion d'id " << piece.obtenirId() << "est maintenant un(e)" << typeid(*lePion).name() << endl;
 		return true;
 	}
+	cout << "Promotion impossible" << endl;
 	return false;
 }
 

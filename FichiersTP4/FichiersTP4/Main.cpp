@@ -1,8 +1,7 @@
-
 /**************************************************
-* Titre: Travail pratique #4 - Main.cpp
-* Date:
-* Auteur:
+* Titre:	Travail pratique #4 - Main.cpp
+* Date:		24 fevrier 2017
+* Auteur:	FERRON, Samue. FONTAINE, Jean-Frederic.
 **************************************************/
 
 #include "Piece.h"
@@ -46,10 +45,10 @@ int main()
 	Tour tn2("H8", "noir", 7, 7);
 
 	//5-  Creez les Fous blanc et noirs
-	Fou fb1("B1","blanc", 1, 0);
-	Fou fb2("G1","blanc", 6, 0);
-	Fou fn1("B8","noir", 1, 7);
-	Fou fn2("G8","noir", 6, 7);
+	Fou fb1("C1","blanc", 1, 0);
+	Fou fb2("F1","blanc", 6, 0);
+	Fou fn1("C8","noir", 1, 7);
+	Fou fn2("F8","noir", 6, 7);
 
 	//6-  Creez les deux reines E1 et E8	
 	Reine rb("E1", "blanc", 4, 0);
@@ -63,37 +62,78 @@ int main()
 	Echiquier unEchiquier;	
 
 	cout << "----------AJOUT DES PIECES----------" << endl;
-	unEchiquier += &roib;
-	unEchiquier += &fb1;
-	cout << unEchiquier << endl;
 	//9- Ajoutez toutes les pi�ces pr�cidament d�finies � l'echiquier	
+	unEchiquier += &pb1;
+	unEchiquier += &pb2;
+	unEchiquier += &pb3;
+	unEchiquier += &pb4;
+	unEchiquier += &pb5;
+	unEchiquier += &pb6;
+	unEchiquier += &pb7;
+	unEchiquier += &pb8;
+	unEchiquier += &pn1;
+	unEchiquier += &pn2;
+	unEchiquier += &pn3;
+	unEchiquier += &pn4;
+	unEchiquier += &pn5;
+	unEchiquier += &pn6;
+	unEchiquier += &pn7;
+	unEchiquier += &pn8;
+	unEchiquier += &tb1;
+	unEchiquier += &tb2;
+	unEchiquier += &tn1;
+	unEchiquier += &tn2;
+	unEchiquier += &fb1;
+	unEchiquier += &fb2;
+	unEchiquier += &fn1;
+	unEchiquier += &fn2;
+	unEchiquier += &rb;
+	unEchiquier += &rn;
+	unEchiquier += &roib;
+	unEchiquier += &roin;
 
 	cout << "----------TEST DES DEPLACEMENTS------------" << endl;
 	//10-  Deplacer la piece d'id A2 � la position (0,2)  --Deplacement de Pion
-	
-	
-	//cout << unEchiquier;
-	
+	unEchiquier.deplacerPiece("A2", 0, 2);
 	//11-  Deplacer le piece d'id H7 � la position (7,4)  --Deplacement du Pion
-	
+	unEchiquier.deplacerPiece("H7", 7, 4);
 	//12-  Deplacer la piece d'id A2 � la position (0,4)  --Deplacement du Pion
-	
+	unEchiquier.deplacerPiece("A2", 0, 4);
 	//13-  Deplacer la piece d'id H8 � la position (7,6)  --Deplacement de la Tour
-	
+	unEchiquier.deplacerPiece("H8", 7, 6);
 	//14-  Deplacer la piece d'id H8 � la position (7,6)  --Deplacement de la Tour
-	
+	unEchiquier.deplacerPiece("H8", 7, 6);
 	//15-  Enlever la piece d'id A2 
+	unEchiquier -= "A2";
 
 	cout << "----------TEST DES PROMOTIONS------------" << endl;
 	
 	//16- Promouvoir la piece d'id F6.
-	
+	unEchiquier.promouvoir("F6");
 	//17- Promouvoir la piece d'id B2.	
-
+	unEchiquier.promouvoir("B2");
 	//18- Affichage de l'Echiquier
-	
+	cout << unEchiquier << endl;
 	//Si vous avez besoin de lancer avec un arret a la fin, faites ctrl+F5;
 
+	/*QUESTIONS
+	1- 	La classe pièce est une classe abstraite car nous ne devons pas créer cet objet.
+		Cette classe sert seulement a encapsuler les differents attributs et méthodes
+		communes au différents types de pièces. Dans le contexte du jeux d'échec, il est 
+		insensé de créer une objet de type Piece car il est un concept et non un objet 
+		physique.
+
+	2-	Puisque nos objets sont tous dans un vecteur de type pièce, il est intéressant
+		d'avoir un destructeur virtuel dans la classe mère (Piece). Par exempl, si nous
+		avions une classe fille ayant des attributs supplémentaire, dont des pointeurs,
+		il est important de détruire ces pointeurs, mais la classe mère ne fait pas
+		nécessairement cest manupulations.
+
+	3-	Nous aurions pu faire de l'héritage multiple avec les classes Fou et Tour pour
+		implémenter la fonction estMouvementValide puisque la reine bouge de ces deux
+		façon. Il est important maintenant que Four et Tour héritent virtuellement de 
+		la classe Piece afin d'éviter le problème du diamant.
+	*/
 	return 0;
 }
 

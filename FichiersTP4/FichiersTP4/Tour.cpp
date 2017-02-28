@@ -1,9 +1,8 @@
-
-/********************************************
-* Titre: Travail pratique #4 - Tour.cpp
-* Date:
-* Auteur:
-*******************************************/
+/**************************************************
+* Titre:	Travail pratique #4 - Tour.cpp
+* Date:		24 fevrier 2017
+* Auteur:	FERRON, Samue. FONTAINE, Jean-Frederic.
+**************************************************/
 
 #include "Tour.h"
 

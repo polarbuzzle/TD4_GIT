@@ -1,4 +1,3 @@
-
 /********************************************
 * Titre:	Travail pratique #4 - Piece.h
 * Date:		24 février 2017
@@ -25,7 +24,7 @@ public :
 		:id_(id), couleur_(couleur), positionX_(positionX), positionY_(positionY){}
 
 	// destructeur
-	~Piece() {}
+	virtual ~Piece() {}
 
 	// acesseur et modificateur
 	string obtenirId() const {
@@ -58,8 +57,18 @@ public :
 	void modifierPositionY(int y) {
 		positionY_ = y;
 	}
+	//Retourne le type (classe) de la piece
+	string obtenirType() const 	{ 
+		return typeid(*this).name();
+	}
 
-	
+	/*********************************************
+	*Fonctions:		estMouvementValide()
+	*Descriptions:	Verifi si le deplacement est valide ou non
+	*Parametre:		toX : destination en x
+	               	toY : destination en y
+	*Retour:		estValide : retourne vrai si le mouvement est valide
+	*********************************************/
 	virtual bool estMouvementValide(int toX, int toY) const{
 		bool estValide = false;
 		bool estValideX = (toX < 8 && toX >= 0);
@@ -70,30 +79,24 @@ public :
 		return estValide;
 	} 
 
-     
-	virtual bool deplacer(int toX, int toY) = 0; // A MODIFIER
+	//Methode virtuelle pure
+	virtual bool deplacer(int toX, int toY) = 0;
 
-	
-	string obtenirType() const 	{ 
-		return typeid(*this).name();
-	}
 
-	virtual ostream&  afficher(ostream& stream) const {  // A MODIFIER SI NECESSAIRE
+	virtual ostream&  afficher(ostream& stream) const {
 		stream << "Piece " << couleur_ << " d'id " << id_ << " : " << endl;
 		stream << "Position (" << positionX_ << ", " << positionY_ << ")" << endl;
 		return stream;
 	}
+	
 	friend ostream& operator<<(ostream& out, const Piece& piece)
 	{
 		piece.afficher(out);
 		return out;
 	}
 
-	                                            
-
-
 private:
-
+	//Attributs
 	string id_;
 	string couleur_;
 	int positionX_;

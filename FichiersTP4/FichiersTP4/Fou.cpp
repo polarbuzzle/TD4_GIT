@@ -85,7 +85,7 @@ bool Fou::deplacer(int toX, int toY)  {
 *Parametre:		stream : flux dans lequel on met les informations
 *Retour:		stream : flux dans lequel on a mit les informations
 *********************************************/
-ostream&  Fou::afficher(ostream& stream) const {  // A MODIFIER SI NECESSAIRE
+ostream&  Fou::afficher(ostream& stream) const {
 		stream << "Fou " << obtenirCouleur() << " d'id " << obtenirId() << " : " << endl;
 		stream << "Position (" << obtenirPositionX() << ", " << obtenirPositionY() << ")" << endl;
 		return stream;

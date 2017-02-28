@@ -1,9 +1,8 @@
-
-/********************************************
-* Titre: Travail pratique #4 - Tour.h
-* Date:
-* Auteur:
-*******************************************/
+/**************************************************
+* Titre:	Travail pratique #4 - Tour.h
+* Date:		24 fevrier 2017
+* Auteur:	FERRON, Samue. FONTAINE, Jean-Frederic.
+**************************************************/
 
 #ifndef TOUR_H
 #define TOUR_H
@@ -23,7 +22,7 @@ public:
 	Tour(const Pion& pion);
 
 	// Destructeur
-	~Tour();
+	virtual ~Tour();
 	
 	virtual bool estMouvementValide(int toX, int toY) const;
 	virtual bool deplacer(int toX, int toY);
