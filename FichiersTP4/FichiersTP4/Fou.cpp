@@ -56,7 +56,7 @@ bool Fou::estMouvementValide(int toX, int toY) const {
 	if (Piece::estMouvementValide(toX, toY)) {
         int diffX = abs(toX - obtenirPositionX());
         int diffY = abs(toY - obtenirPositionY());
-        if (toX == toY) {
+        if (diffX == diffY) {
             estValide = true;
         }
     }
@@ -73,7 +73,7 @@ bool Fou::estMouvementValide(int toX, int toY) const {
 bool Fou::deplacer(int toX, int toY)  {
 	if (estMouvementValide(toX, toY)) {
 		modifierPositionX(toX);
-		modifierPositionX(toY);		
+		modifierPositionY(toY);		
 		return true;
 	}
 	return false;

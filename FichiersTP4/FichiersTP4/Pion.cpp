@@ -71,7 +71,7 @@ bool Pion::deplacer(int toX, int toY) {
 	if (estMouvementValide(toX, toY)) {
 		
 		modifierPositionX(toX);
-		modifierPositionX(toY);
+		modifierPositionY(toY);
 		estPositionInitiale_ = false;	
 		return true;
 	}

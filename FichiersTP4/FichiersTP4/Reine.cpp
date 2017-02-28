@@ -19,14 +19,24 @@ Reine::~Reine() {}
 
 bool Reine::estMouvementValide(int toX, int toY) const{
     bool estValide = false;
-	
+	if (Piece::estMouvementValide(toX, toY)) {
+		if ((obtenirPositionX() == toX)  || (obtenirPositionY() == toY))		
+		estValide = true;
+	}
+	if (Piece::estMouvementValide(toX, toY)) {
+        int diffX = abs(toX - obtenirPositionX());
+        int diffY = abs(toY - obtenirPositionY());
+        if (diffX == diffY) {
+            estValide = true;
+        }
+    }
     return estValide;
 }
 
 bool Reine::deplacer(int toX, int toY)  {
 	if (estMouvementValide(toX, toY)) {
 		modifierPositionX(toX);
-		modifierPositionX(toY);		
+		modifierPositionY(toY);		
 		return true;
 	}
 	return false;

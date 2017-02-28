@@ -28,7 +28,7 @@ Roi::~Roi() {}
 bool Roi::deplacer(int toX, int toY)  {
 	if (estMouvementValide(toX, toY)) {
 		modifierPositionX(toX);
-		modifierPositionX(toY);		
+		modifierPositionY(toY);		
 		return true;
 	}
 	return false;
