@@ -88,7 +88,7 @@ Echiquier& Echiquier::operator+=(Piece* piece) {
 	bool memeId = false; 
 	string couleur = piece->obtenirCouleur();
 	bool couleurNoir = false; 
-	Tour* tour; 
+	Tour* tour;
 	if (couleur == "blanc") {
 
 		for (int i = 0; i < vecteurPiecesBlanches_.size(); i++) {
@@ -111,6 +111,7 @@ Echiquier& Echiquier::operator+=(Piece* piece) {
 		if ((tour = dynamic_cast<Tour*>(piece)))
 			vecteurPiecesNoires_.push_back(tour);
 	}
+	return *this;
 }
 
 

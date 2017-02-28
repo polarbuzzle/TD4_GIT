@@ -68,9 +68,10 @@ int main()
 
 	cout << "----------TEST DES DEPLACEMENTS------------" << endl;
 	//10-  Deplacer la piece d'id A2 � la position (0,2)  --Deplacement de Pion
-
+	
 	tb2.deplacer(2,0);
-
+	
+	
 	cout << tb2 << endl;
 
 	//cout << unEchiquier;

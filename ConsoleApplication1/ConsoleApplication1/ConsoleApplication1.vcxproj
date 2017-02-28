@@ -150,13 +150,16 @@
     <ClInclude Include="..\..\FichiersTP4\FichiersTP4\Fou.h" />
     <ClInclude Include="..\..\FichiersTP4\FichiersTP4\Piece.h" />
     <ClInclude Include="..\..\FichiersTP4\FichiersTP4\Pion.h" />
+    <ClInclude Include="..\..\FichiersTP4\FichiersTP4\Reine.h" />
     <ClInclude Include="..\..\FichiersTP4\FichiersTP4\Roi.h" />
     <ClInclude Include="..\..\FichiersTP4\FichiersTP4\Tour.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\FichiersTP4\FichiersTP4\Echiquier.cpp" />
+    <ClCompile Include="..\..\FichiersTP4\FichiersTP4\Fou.cpp" />
     <ClCompile Include="..\..\FichiersTP4\FichiersTP4\Main.cpp" />
     <ClCompile Include="..\..\FichiersTP4\FichiersTP4\Pion.cpp" />
+    <ClCompile Include="..\..\FichiersTP4\FichiersTP4\Reine.cpp" />
     <ClCompile Include="..\..\FichiersTP4\FichiersTP4\Roi.cpp" />
     <ClCompile Include="..\..\FichiersTP4\FichiersTP4\Tour.cpp" />
     <ClCompile Include="echiquierBackup.cpp" />

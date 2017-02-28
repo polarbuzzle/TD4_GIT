@@ -78,18 +78,19 @@ public :
 		return typeid(*this).name();
 	}
 
-	friend std::ostream& operator<<(std::ostream& out, const Piece& piece)
-	{
-		out << piece.afficher(out);
-		return out;
-	}
-
-	                                            
 	virtual ostream&  afficher(ostream& stream) const {  // A MODIFIER SI NECESSAIRE
 		stream << "Piece " << couleur_ << " d'id " << id_ << " : " << endl;
 		stream << "Position (" << positionX_ << ", " << positionY_ << ")" << endl;
 		return stream;
 	}
+	friend ostream& operator<<(ostream& out, const Piece& piece)
+	{
+		piece.afficher(out);
+		return out;
+	}
+
+	                                            
+
 
 private:
 
