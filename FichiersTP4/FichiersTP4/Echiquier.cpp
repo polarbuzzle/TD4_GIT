@@ -1,5 +1,5 @@
 /**********************************************
-* Titre: Travail pratique #1 - Echiquier.cpp
+* Titre: Travail pratique #4 - Echiquier.cpp
 * Date: 24 fevrier 2017
 * Auteur: FERRON Samuel, FONTAINE Jean-Frederic
 *Description: Implementation de classe Echiquier
@@ -29,11 +29,11 @@ Echiquier::Echiquier() {}
 *********************************************/
 	Echiquier::~Echiquier() {
 		for (int i = 0; i < vecteurPiecesBlanches_.size(); i++) {
-			//delete vecteurPiecesBlanches_[i];
+			delete vecteurPiecesBlanches_[i];
 			vecteurPiecesBlanches_[i] = NULL;
 		}
 		for (int j = 0; j < vecteurPiecesNoires_.size(); j++) {
-			//delete vecteurPiecesBlanches_[j];
+			delete vecteurPiecesBlanches_[j];
 			vecteurPiecesNoires_[j] = NULL;
 		}
 	}
@@ -155,45 +155,41 @@ Echiquier& Echiquier::operator+=(Piece* piece) {
  	else if (ajouter)
  		vecteurPiecesNoires_.push_back(nouveau);
  }
- /*********************************************
- *Fonctions:		Echiquier::operator+=()
- *Descriptions:	Permet d'ajouter une piece a l'echiquier. Cette fonction
- *				verifie qu'aucune autre piece a le meme ID. Si l'objet qu'on
- *				tente d'inserer nest pas compatible un message d'erreur sera affiche.
- *Parametre:		-(Piece*)piece		 : Le pointeur de la piece a ajouter.
- *Retour:		-(Personnel&)this	 : le personnel modiffie
- *********************************************/
+ /*******************************************************************
+*Fonctions:			Echiquier::operator+=()
+*Descriptions:		Fonction qui permet de retirer une piece de
+*					l'echiquier. 
+*Parametre:			-(string&)id		: L'id de la piece a retirer
+*Retour:			-(Echiquie&)*this	: L'echiquier avec l'element en moin. 
+ *******************************************************************/
  Echiquier& Echiquier::operator-=(const string& id) {
-	 
-	 bool trouver = false; 
+
+	 bool trouver = false;
 	 for (int i = 0; i < vecteurPiecesBlanches_.size(); i++) {
 		 if (vecteurPiecesBlanches_[i]->obtenirId() == id) {
 			 vecteurPiecesBlanches_[i] = vecteurPiecesBlanches_[vecteurPiecesBlanches_.size() - 1];
 			 delete vecteurPiecesBlanches_[vecteurPiecesBlanches_.size() - 1];
 			 vecteurPiecesBlanches_.pop_back();
+			 trouver = true;
 		 }
-			
-
-
 	 }
-
-
-
-
-
+	 for (int i = 0; i < vecteurPiecesNoires_.size() && !trouver; i++) {
+		 if (vecteurPiecesNoires_[i]->obtenirId() == id) {
+			 vecteurPiecesNoires_[i] = vecteurPiecesNoires_[vecteurPiecesNoires_.size() - 1];
+			 delete vecteurPiecesNoires_[vecteurPiecesNoires_.size() - 1];
+			 vecteurPiecesNoires_.pop_back();
+			 trouver = true;
+		 }
+	 }
+	 return *this; 
  }
-
-
-
-
-
-
-
-
-
-
-
-
+/*******************************************************************
+*Fonctions:			Echiquier::promouvoir()
+*Descriptions:		Fonction qui permet de promouvoir une piece de type Pion
+*					au titre de la piece choisi par le joueur. 
+*Parametre:		-(Piece*)piece		 : Le pion a promouvoir 
+*Retour:		-(bool)				 : Vrai si le pion a ete promu, faux dans le cas contaire. 
+ *******************************************************************/
 bool Echiquier::promouvoir(Piece &piece) {
 	int nombreAll = rand() %2;
 	int index = -1;
@@ -242,7 +238,7 @@ bool Echiquier::promouvoir(Piece &piece) {
 }
 
 /*********************************************
-*Fonctions:		operato <<
+*Fonctions:		operator <<
 *Descriptions:	Permet d'afficher toutes les informations
 				de chacune des pieces dans ses vecteurs.				
 *Parametre:		out : flux dans lequel on met les informations

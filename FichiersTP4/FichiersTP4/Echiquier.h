@@ -1,9 +1,9 @@
-
-/********************************************
-* Titre: Travail pratique #4 - Echiquier.h
-* Date:
-* Auteur:
-*******************************************/
+/**********************************************
+* Titre: Travail pratique #4 - Echiquier.cpp
+* Date: 24 fevrier 2017
+* Auteur: FERRON Samuel, FONTAINE Jean-Frederic
+*Description: Fichier header de la classe Echiquier
+*********************************************/
 
 #ifndef ECHIQUIER_H
 #define ECHIQUIER_H
