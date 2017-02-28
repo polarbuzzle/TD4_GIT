@@ -86,31 +86,29 @@ bool Echiquier::deplacerPiece(const string& id, int toX, int toY) {
 *********************************************/
 Echiquier& Echiquier::operator+=(Piece* piece) {
 	bool memeId = false; 
-	string couleur = piece->obtenirCouleur();
-	bool couleurNoir = false; 
-	Tour* tour;
-	if (couleur == "blanc") {
+	//string couleur = piece->obtenirCouleur();
+	bool couleurNoir = piece->obtenirCouleur() == "noir";
+
+	if (!couleurNoir) {
 
 		for (int i = 0; i < vecteurPiecesBlanches_.size(); i++) {
-			if (vecteurPiecesBlanches_[i]->obtenirId() == piece->obtenirId())
+			if (vecteurPiecesBlanches_[i]->obtenirId() == piece->obtenirId()) {
 				memeId = true;
+				cout << "Piece avec la meme ID, impossible d'ajouter !" << endl;
 			}
-		if ((tour = dynamic_cast<Tour*>(piece))) {
-			vecteurPiecesBlanches_.push_back(new Tour(tour->obtenirId(), tour->obtenirCouleur(), tour->obtenirPositionX(), tour->obtenirPositionY()));
-			cout << *tour << endl << *piece << endl;
 		}
-			
 	}
-	else if (couleur == "noir") {
-		couleurNoir = true; 
+	else if (couleurNoir) {
 		for (int j = 0; j < vecteurPiecesNoires_.size(); j++) {
 			if (vecteurPiecesNoires_[j]->obtenirId() == piece->obtenirId()) {
 				memeId = true;
+				cout << "Piece avec la meme ID, impossible d'ajouter !" << endl;
 			}
+			
 		}
-		if ((tour = dynamic_cast<Tour*>(piece)))
-			vecteurPiecesNoires_.push_back(tour);
 	}
+	if (!memeId)
+		reconnaiseurDeClasse(*piece, couleurNoir);
 	return *this;
 }
 
@@ -125,27 +123,40 @@ un cast dynamic afin de verifier si le type inserer est compatible.
 *Parametre:		-(Piece*)piece		 : Le pointeur de la piece a ajouter.
 *Retour:		-(Personnel&)this : le personnel modiffie
 *********************************************/
-// void Echiquier::reconnaiseurDeClasse(const Piece &p,const bool couleur) {
+ void Echiquier::reconnaiseurDeClasse(const Piece &p,const bool couleur) {
 
-// 	string nomDuType = typeid(p).name();
-// 	Piece* nouveau = 0;
+ 	string nomDuType = typeid(p).name();
+ 	Piece* nouveau = nullptr;
+	bool ajouter = false;
 
-// 	if (nomDuType == "Roi") 
-// 		nouveau = new Roi(p.obtenirId(), p.obtenirCouleur(), p.obtenirPositionX(), p.obtenirPositionY());
-// 	else if (nomDuType == "Pion")
-// 		nouveau = new Pion(p.obtenirId(), p.obtenirCouleur(), p.obtenirPositionX(), p.obtenirPositionY());
-// 	else if (nomDuType == "Tour")
-// 		nouveau = new Tour(p.obtenirId(), p.obtenirCouleur(), p.obtenirPositionX(), p.obtenirPositionY());
-// 	else if (nomDuType == "Reine")
-// 		nouveau = new Reine(p.obtenirId(), p.obtenirCouleur(), p.obtenirPositionX(), p.obtenirPositionY());
-// 	else if (nomDuType == "Fou")
-// 		nouveau = new Fou(p.obtenirId(), p.obtenirCouleur(), p.obtenirPositionX(), p.obtenirPositionY());
-
-// 	if (!couleur)
-// 		vecteurPiecesBlanches_.push_back(nouveau);
-// 	else
-// 		vecteurPiecesNoires_.push_back(nouveau);
-// }
+	if (nomDuType == "Roi") {
+		nouveau = new Roi(p.obtenirId(), p.obtenirCouleur(), p.obtenirPositionX(), p.obtenirPositionY());
+		ajouter = true; 
+	}
+ 	else if (nomDuType == "Pion"){
+ 		nouveau = new Pion(p.obtenirId(), p.obtenirCouleur(), p.obtenirPositionX(), p.obtenirPositionY());
+		ajouter = true;
+	}
+ 	else if (nomDuType == "Tour"){
+ 		nouveau = new Tour(p.obtenirId(), p.obtenirCouleur(), p.obtenirPositionX(), p.obtenirPositionY());
+		ajouter = true;
+	}
+ 	else if (nomDuType == "Reine"){
+ 		nouveau = new Reine(p.obtenirId(), p.obtenirCouleur(), p.obtenirPositionX(), p.obtenirPositionY());
+		ajouter = true;
+	}
+	else if (nomDuType == "Fou") {
+		nouveau = new Fou(p.obtenirId(), p.obtenirCouleur(), p.obtenirPositionX(), p.obtenirPositionY());
+		ajouter = true;
+	}
+	else
+		cout << "Cet objet est incompatible !" << endl;
+ 	
+	if (!couleur && ajouter)
+ 		vecteurPiecesBlanches_.push_back(nouveau);
+ 	else if (ajouter)
+ 		vecteurPiecesNoires_.push_back(nouveau);
+ }
 
 
 

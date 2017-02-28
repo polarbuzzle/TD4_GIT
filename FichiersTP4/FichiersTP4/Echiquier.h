@@ -34,15 +34,19 @@ public:
 	
 	bool deplacerPiece(const string& id, int toX, int toY);
 	
+	//Fonction permettant de reconnaitre la piece a ajouter dans l'echiquier
+	void reconnaiseurDeClasse(const Piece &p, const bool couleur);
+	//Fonction permettant d'ajouter une piece dans l'echiquier
 	Echiquier& operator+=(Piece* piece);
 	
 	//Echiquier& operator-=(const string& id);
+	//Fonction permettant de reconnaitre la piece a ajouter dans l'echiquier
+	void reconnaiseurDeClasse(const Piece &p, const bool couleur);
 	
 	bool promouvoir(Piece &piece);
 
 
-	//Echiquier& operator-=(&Piece)
-	
+
 	friend std::ostream& operator<<(std::ostream& out, const Echiquier& echiquier);//A completer
 	
 
