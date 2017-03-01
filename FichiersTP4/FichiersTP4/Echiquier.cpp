@@ -198,7 +198,7 @@ bool Echiquier::promouvoir(const string& id) {
 	bool estBlanc = true;
 	bool estTrouve = false;
 	bool estPion = false;
-	Pion* lePion = 0;
+	Pion* lePion = nullptr;
 	for (unsigned i = 0; i < vecteurPiecesBlanches_.size(); i++) {
 		if (vecteurPiecesBlanches_[i]->obtenirId() == id && vecteurPiecesBlanches_[i]->obtenirType() == "class Pion") {
 			lePion = new Pion(vecteurPiecesBlanches_[i]->obtenirId(),
@@ -253,6 +253,7 @@ bool Echiquier::promouvoir(const string& id) {
 			cout << "Le pion d'id " << id << "est maintenant un fou" << endl;
 		break;
 		}
+		delete lePion;
 		return true;
 	}
 	cout << "Promotion impossible" << endl;
