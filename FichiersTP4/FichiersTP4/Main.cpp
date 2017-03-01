@@ -1,9 +1,10 @@
-/**************************************************
-* Titre:	Travail pratique #4 - Main.cpp
-* Date:		24 fevrier 2017
-* Auteur:	FERRON, Samue. FONTAINE, Jean-Frederic.
-**************************************************/
-
+/**********************************************
+ * Titre: Travail pratique #4 - Echiquier.cpp
+ * Date: 24 fevrier 2017
+ * Auteur: FERRON Samuel, FONTAINE Jean-Frederic
+ *Description:  Main du jeu d'echec pour le TP4 dans
+ *              le cadre du cours INF1010 hiver 2017
+ *********************************************/
 #include "Piece.h"
 #include "Roi.h"
 #include "Tour.h"
@@ -120,13 +121,14 @@ int main()
 		Cette classe sert seulement a encapsuler les differents attributs et méthodes
 		communes au différents types de pièces. Dans le contexte du jeux d'échec, il est 
 		insensé de créer une objet de type Piece car il est un concept et non un objet 
-		physique.
+		physique. Finalement, pour ces raison, cette classe détient une méthode virtuelle
+        pure, ce qui en fait un classe abstraite.
 
-	2-	Puisque nos objets sont tous dans un vecteur de type pièce, il est intéressant
-		d'avoir un destructeur virtuel dans la classe mère (Piece). Par exempl, si nous
-		avions une classe fille ayant des attributs supplémentaire, dont des pointeurs,
-		il est important de détruire ces pointeurs, mais la classe mère ne fait pas
-		nécessairement cest manupulations.
+	2-	Imaginons une situation on une classe fille est composé d'éléments dynamique. Dans cette situation
+        il est primordial de faire des delete sur ces éléments dans le destructeur de cette classe. Par contre, 
+        si le destructeur de la classe mère n'est pas d'éclré virtuel, le destructeur de la classe fille ne 
+        sera jamais appelé; ceci mènera a des fuites de mémoires. Par contre, si l'on déclare le destructeur de
+        la classe mère comme virtuel, celui de la classe fille sera appelé. En voilà l'intérèt.
 
 	3-	Nous aurions pu faire de l'héritage multiple avec les classes Fou et Tour pour
 		implémenter la fonction estMouvementValide puisque la reine bouge de ces deux

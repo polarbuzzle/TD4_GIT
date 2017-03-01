@@ -1,8 +1,9 @@
-/**************************************************
-* Titre:	Travail pratique #4 - Reine.cpp
-* Date:		24 fevrier 2017
-* Auteur:	FERRON, Samue. FONTAINE, Jean-Frederic.
-**************************************************/
+/**********************************************
+ * Titre:       Travail pratique #4 - Echiquier.cpp
+ * Date:        24 fevrier 2017
+ * Auteur:      FERRON Samuel, FONTAINE Jean-Frederic
+ *Description:  Implementation de classe Reine
+ *********************************************/
 
 #include <cmath>
 #include "Reine.h"
@@ -18,10 +19,10 @@ Reine::Reine(): Piece("defaultId", "blanc", 0, 0) {}
 /*********************************************
 *Fonctions:		Reine()
 *Descriptions:	Constructeur par parametres Reine
-*Parametre:		id : string de l'id
-                couleur : string de la couleur de la piece 
-                positionX : int de la position en x 
-                positionY : int de la position en y
+*Parametre:		-(string)id      : string de l'id
+                -(string)couleur : string de la couleur de la piece
+                -(int)positionX  : int de la position en x
+                -(int)positionY  : int de la position en y
 *Retour:		Aucun
 *********************************************/
 Reine::Reine(const string& id, const string& couleur, int positionX, int positionY) 

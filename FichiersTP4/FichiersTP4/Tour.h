@@ -1,7 +1,8 @@
 /**************************************************
-* Titre:	Travail pratique #4 - Tour.h
-* Date:		24 fevrier 2017
-* Auteur:	FERRON, Samue. FONTAINE, Jean-Frederic.
+* Titre:        Travail pratique #4 - Tour.h
+* Date:         24 fevrier 2017
+* Auteur:       FERRON, Samue. FONTAINE, Jean-Frederic.
+*Description:   Fichier header de la classe Tour
 **************************************************/
 
 #ifndef TOUR_H
