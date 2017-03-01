@@ -21,7 +21,7 @@ public:
 	Fou(const string& id, const string& couleur, int positionX, int positionY);
 	Fou(const Pion& pion);
 	// Destructeur
-	virtual ~Fou();
+	~Fou();
 
 	virtual bool estMouvementValide(int toX, int toY) const;
 	virtual bool deplacer(int toX, int toY);

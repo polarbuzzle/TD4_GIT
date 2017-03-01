@@ -24,7 +24,7 @@ public :
 		:id_(id), couleur_(couleur), positionX_(positionX), positionY_(positionY){}
 
 	// destructeur
-	virtual ~Piece() {}
+	~Piece() {}
 
 	// acesseur et modificateur
 	string obtenirId() const {
