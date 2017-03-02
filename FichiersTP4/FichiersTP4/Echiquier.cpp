@@ -29,9 +29,12 @@ Echiquier::Echiquier() {}
 *********************************************/
 	Echiquier::~Echiquier() {
 		for (int i = 0; i < vecteurPiecesBlanches_.size(); i++) {
+			delete vecteurPiecesBlanches_[i];
 			vecteurPiecesBlanches_[i] = NULL;
+			 
 		}
 		for (int j = 0; j < vecteurPiecesNoires_.size(); j++) {
+			delete vecteurPiecesNoires_[j];
 			vecteurPiecesNoires_[j] = NULL;
 		}
 	}
