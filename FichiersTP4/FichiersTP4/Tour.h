@@ -23,7 +23,7 @@ public:
 	Tour(const Pion& pion);
 
 	// Destructeur
-	~Tour();
+	virtual ~Tour();
 	
 	virtual bool estMouvementValide(int toX, int toY) const;
 	virtual bool deplacer(int toX, int toY);

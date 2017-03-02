@@ -19,7 +19,7 @@ class Roi : public Piece{
 public :
 	Roi();
 	Roi(const string& id, const string& couleur, int positionX, int positionY);
-	~Roi();	
+	virtual ~Roi();	
 
 	virtual bool estMouvementValide(int toX, int toY);  
 	virtual bool deplacer(int toX, int toY);

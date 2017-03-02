@@ -22,7 +22,7 @@ public:
 	Reine(const string& id, const string& couleur, int positionX, int positionY);
 	Reine(const Pion& pion);
 	// Destructeur
-	~Reine();
+	virtual ~Reine();
 
 	virtual bool estMouvementValide(int toX, int toY) const;
 	virtual bool deplacer(int toX, int toY);
