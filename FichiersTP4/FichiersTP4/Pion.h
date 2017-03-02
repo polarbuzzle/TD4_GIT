@@ -1,9 +1,8 @@
-/**********************************************
- * Titre:       Travail pratique #4 - Echiquier.cpp
- * Date:        24 fevrier 2017
- * Auteur:      FERRON Samuel, FONTAINE Jean-Frederic
- *Description:  Fichier header de la classe Pion
- *********************************************/
+/**************************************************
+* Titre:	Travail pratique #4 - Pion.h
+* Date:		24 fevrier 2017
+* Auteur:	FERRON, Samue. FONTAINE, Jean-Frederic.
+**************************************************/
 
 #pragma once
 

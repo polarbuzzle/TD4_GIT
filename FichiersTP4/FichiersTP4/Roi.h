@@ -1,9 +1,8 @@
-/**********************************************
- * Titre:       Travail pratique #4 - Echiquier.cpp
- * Date:        24 fevrier 2017
- * Auteur:      FERRON Samuel, FONTAINE Jean-Frederic
- *Description:  Fichier header de la classe roi
- *********************************************/
+/**************************************************
+* Titre:	Travail pratique #4 - Roi.h
+* Date:		24 fevrier 2017
+* Auteur:	FERRON, Samue. FONTAINE, Jean-Frederic.
+**************************************************/
 
 #ifndef ROI_H
 #define ROI_H

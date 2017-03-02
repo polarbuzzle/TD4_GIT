@@ -1,8 +1,7 @@
 /********************************************
-* Titre:        Travail pratique #4 - Piece.h
-* Date:         24 février 2017
-* Auteur:       FERRON, Samuel. FONTAINE, Jean-Frederic
-* Description:  fichier header de la classe mere Piece. 
+* Titre:	Travail pratique #4 - Piece.h
+* Date:		24 février 2017
+* Auteur:	FERRON, Samuel. FONTAINE, Jean-Frederic
 *******************************************/
 
 #ifndef PIECE_H
@@ -31,8 +30,6 @@ public :
 	string obtenirId() const {
 		return id_; 
 	}
-    //Methode virtuelle pure
-    virtual bool deplacer(int toX, int toY) = 0;
 
 	void modifierId(const string& id) {
 		id_ = id;
