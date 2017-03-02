@@ -30,12 +30,12 @@ Echiquier::Echiquier() {}
 	Echiquier::~Echiquier() {
 		for (int i = 0; i < vecteurPiecesBlanches_.size(); i++) {
 			delete vecteurPiecesBlanches_[i];
-			vecteurPiecesBlanches_[i] = NULL;
+			vecteurPiecesBlanches_[i] = nullptr;
 			 
 		}
 		for (int j = 0; j < vecteurPiecesNoires_.size(); j++) {
 			delete vecteurPiecesNoires_[j];
-			vecteurPiecesNoires_[j] = NULL;
+			vecteurPiecesNoires_[j] = nullptr;
 		}
 	}
 
@@ -188,7 +188,10 @@ Echiquier& Echiquier::operator+=(Piece* piece) {
 /*******************************************************************
 *Fonctions:			Echiquier::promouvoir()
 *Descriptions:		Fonction qui permet de promouvoir une piece de type Pion
-*					au titre de la piece choisi par le joueur. 
+*					au titre de la piece choisi par le joueur. Plusieurs verification sont faites
+					puis on fait une deep copie du pion, on le transforme en une autre piece 
+					de facon aleatoire, on delete et met le pointeur du vieux pion a Nullptr, on 
+					insere la nouvelle piece a lindice de lancien pion.
 *Parametre:		-(Piece*)piece		 : Le pion a promouvoir 
 *Retour:		-(bool)				 : Vrai si le pion a ete promu, faux dans le cas contaire. 
  *******************************************************************/
@@ -205,6 +208,8 @@ bool Echiquier::promouvoir(const string& id) {
 				vecteurPiecesBlanches_[i]->obtenirCouleur(),
 				vecteurPiecesBlanches_[i]->obtenirPositionX(),
 				vecteurPiecesBlanches_[i]->obtenirPositionY());
+			delete vecteurPiecesBlanches_[i];
+			vecteurPiecesBlanches_[i] = nullptr;
 			estBlanc = true;
 			estTrouve = true;
 			index = i;
@@ -216,6 +221,8 @@ bool Echiquier::promouvoir(const string& id) {
 				 vecteurPiecesNoires_[i]->obtenirCouleur(),
 				 vecteurPiecesNoires_[i]->obtenirPositionX(),
 				 vecteurPiecesNoires_[i]->obtenirPositionY());
+			 delete vecteurPiecesNoires_[i];
+			 vecteurPiecesNoires_[i] = nullptr;
 			estBlanc = false;
 			estTrouve = true;
 			index = i;
